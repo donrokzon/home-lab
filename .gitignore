@@ -1,0 +1,28 @@
+# Secrets
+**/.env
+
+# Runtime data
+**/data/
+**/config/
+**/cache/
+**/logs/
+
+# Databases
+*.db
+*.db-shm
+*.db-wal
+
+# PID files
+*.pid
+
+# Caddy runtime
+caddy/caddy/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
