@@ -1,0 +1,24 @@
+services:
+  dozzle-agent:
+    image: amir20/dozzle:latest
+    container_name: dozzle-agent
+    command: agent
+    restart: unless-stopped
+    ports:
+    - "7007:7007"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  beszel-agent:
+    image: henrygd/beszel-agent
+    container_name: beszel-agent
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${APPDATA_DIR}/beszel-agent:/var/lib/beszel-agent
+    environment:
+      LISTEN: 45876
+      KEY: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILykcAsNznt+sqvqhdXKO4+09oQJzY3iEXnqcjUCr6Sk"
+      TOKEN: "39000b43-7b80-4122-8ff3-f5e13bfec2af"
+      HUB_URL: "https://monitor.dncloud.online"

@@ -1,0 +1,17 @@
+seerr.dncloud.online {
+    reverse_proxy seerr:5055
+}
+
+decypharr.dncloud.online {
+    reverse_proxy decypharr:8282
+}
+
+jellyfin.dncloud.online {
+    reverse_proxy jellyfin:8096
+}
+
+monitor.dncloud.online {
+    reverse_proxy beszel:8090
+}
+
+# docker exec caddy caddy reload --config /etc/caddy/Caddyfile

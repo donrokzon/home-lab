@@ -1,0 +1,21 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: caddy
+    restart: unless-stopped
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - /data/appdata/caddy/data:/data
+      - /data/appdata/caddy/config:/config
+
+    networks:
+      - arr_network
+
+networks:
+  arr_network:
+    external: true
