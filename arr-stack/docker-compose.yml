@@ -39,7 +39,11 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ${APPDATA_DIR}/radarr:/config
-      - ${DATA_DIR}:/data
+      - type: bind
+        source: ${DATA_DIR}
+        target: /data
+        bind:
+          propagation: rshared
 
 ###############################################
 # SONARR - TV Shows
